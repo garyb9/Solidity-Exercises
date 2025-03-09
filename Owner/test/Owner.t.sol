@@ -19,19 +19,11 @@ contract OwnerTest is Test {
         vm.expectRevert();
         owner.updateMagicNumber(5);
         uint256 magicNumber = owner.magicNumber();
-        assertEq(
-            magicNumber,
-            3,
-            "Anybody can call function `updateMagicNumber`"
-        );
+        assertEq(magicNumber, 3, "Anybody can call function `updateMagicNumber`");
 
         vm.prank(deployer);
         owner.updateMagicNumber(10);
         magicNumber = owner.magicNumber();
-        assertEq(
-            magicNumber,
-            10,
-            "Anybody can call function `updateMagicNumber`"
-        );
+        assertEq(magicNumber, 10, "Anybody can call function `updateMagicNumber`");
     }
 }

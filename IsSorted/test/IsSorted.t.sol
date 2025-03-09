@@ -19,11 +19,7 @@ contract IsSortedTest is Test {
         sortedArray[3] = 23;
         sortedArray[4] = 123;
 
-        assertEq(
-            isSorted.isSorted(sortedArray),
-            true,
-            "input array is sorted. Expected: true"
-        );
+        assertEq(isSorted.isSorted(sortedArray), true, "input array is sorted. Expected: true");
     }
 
     function testIsNotSorted() public {
@@ -35,20 +31,12 @@ contract IsSortedTest is Test {
         unsorted[3] = 27;
         unsorted[4] = 99;
 
-        assertEq(
-            isSorted.isSorted(unsorted),
-            false,
-            "input array is not sorted. Expected: false"
-        );
+        assertEq(isSorted.isSorted(unsorted), false, "input array is not sorted. Expected: false");
     }
 
     function testEmptyArray() public {
         uint256[] memory empty = new uint256[](0);
-        assertEq(
-            isSorted.isSorted(empty),
-            true,
-            "input empty array. Expected: true"
-        );
+        assertEq(isSorted.isSorted(empty), true, "input empty array. Expected: true");
     }
 
     function testAllZeroArray() public {
@@ -58,21 +46,13 @@ contract IsSortedTest is Test {
         allZeros[2] = 0;
         allZeros[3] = 0;
         allZeros[4] = 0;
-        assertEq(
-            isSorted.isSorted(allZeros),
-            true,
-            "input all zero array. Expected: true"
-        );
+        assertEq(isSorted.isSorted(allZeros), true, "input all zero array. Expected: true");
     }
 
     function testSingleElementArray() public {
         uint256[] memory singleElement = new uint256[](1);
         singleElement[0] = 42;
-        assertEq(
-            isSorted.isSorted(singleElement),
-            true,
-            "input single element array. Expected: true"
-        );
+        assertEq(isSorted.isSorted(singleElement), true, "input single element array. Expected: true");
     }
 
     function testTwoElementArray() public {
@@ -83,28 +63,16 @@ contract IsSortedTest is Test {
         sortedTwoElement[0] = 1;
         sortedTwoElement[1] = 2;
 
-        assertEq(
-            isSorted.isSorted(sortedTwoElement),
-            true,
-            "input sorted two-element array. Expected: true"
-        );
+        assertEq(isSorted.isSorted(sortedTwoElement), true, "input sorted two-element array. Expected: true");
 
         unSortedTwoElement[0] = 2;
         unSortedTwoElement[1] = 1;
 
-        assertEq(
-            isSorted.isSorted(unSortedTwoElement),
-            false,
-            "input unsorted two-element array. Expected: false"
-        );
+        assertEq(isSorted.isSorted(unSortedTwoElement), false, "input unsorted two-element array. Expected: false");
 
         equalTwoElement[0] = 1;
         equalTwoElement[1] = 1;
 
-        assertEq(
-            isSorted.isSorted(equalTwoElement),
-            true,
-            "input two-element array with equal values. Expected: true"
-        );
+        assertEq(isSorted.isSorted(equalTwoElement), true, "input two-element array with equal values. Expected: true");
     }
 }

@@ -7,6 +7,7 @@ import "../src/Emitter.sol";
 
 contract EmitterTest is Test {
     Emitter public emitter;
+
     event Trigger(address, uint256);
 
     function setUp() public {

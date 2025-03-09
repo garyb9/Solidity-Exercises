@@ -60,11 +60,7 @@ contract MeanTest is Test {
         largeNumbers[1] = 1e42;
         largeNumbers[2] = 1e42;
 
-        assertEq(
-            mean.mean(largeNumbers),
-            1e42,
-            "Mean of large numbers should be the large number itself"
-        );
+        assertEq(mean.mean(largeNumbers), 1e42, "Mean of large numbers should be the large number itself");
     }
 
     function testMeanEmptyArray() external {

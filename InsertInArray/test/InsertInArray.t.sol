@@ -13,24 +13,12 @@ contract InsertInArrayTest is Test {
 
     function testReplaceAtIndex() public {
         insertInArray.replaceAtIndex(2, 42);
-        assertEq(
-            insertInArray.arr(2),
-            42,
-            "expected array at index 2 to be 42"
-        );
+        assertEq(insertInArray.arr(2), 42, "expected array at index 2 to be 42");
 
         insertInArray.replaceAtIndex(4, 200);
-        assertEq(
-            insertInArray.arr(4),
-            200,
-            "expected array at index 4 to be 200"
-        );
+        assertEq(insertInArray.arr(4), 200, "expected array at index 4 to be 200");
 
         insertInArray.replaceAtIndex(9, 100);
-        assertEq(
-            insertInArray.arr(9),
-            100,
-            "expected array at index 9 to be 100"
-        );
+        assertEq(insertInArray.arr(9), 100, "expected array at index 9 to be 100");
     }
 }

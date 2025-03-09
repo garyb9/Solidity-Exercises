@@ -13,14 +13,10 @@ contract WithdrawTest is Test {
 
     function testWithdraw() external {
         vm.deal(address(this), 1 ether);
-        (bool success, ) = address(withdraw).call{value: 1 ether}("");
+        (bool success,) = address(withdraw).call{value: 1 ether}("");
         require(success, "send ether failed");
         withdraw.withdraw();
-        assertEq(
-            address(this).balance,
-            1 ether,
-            "expected address(this).balance to be 1 ether"
-        );
+        assertEq(address(this).balance, 1 ether, "expected address(this).balance to be 1 ether");
     }
 
     receive() external payable {}

@@ -14,11 +14,7 @@ contract OneWeekLockupTest is Test {
     function testDepositEther() external {
         vm.deal(address(this), 1 ether);
         oneWeekLockup.depositEther{value: 1 ether}();
-        assertEq(
-            address(oneWeekLockup).balance,
-            1 ether,
-            "expected balance of oneWeekLockup contract to be 1 ether"
-        );
+        assertEq(address(oneWeekLockup).balance, 1 ether, "expected balance of oneWeekLockup contract to be 1 ether");
         assertEq(oneWeekLockup.balanceOf(address(this)), 1 ether);
     }
 
@@ -38,11 +34,7 @@ contract OneWeekLockupTest is Test {
         oneWeekLockup.withdrawEther(2 ether);
 
         oneWeekLockup.withdrawEther(1 ether);
-        assertEq(
-            address(this).balance,
-            1 ether,
-            "expected balance of address(this) to be 1 ether"
-        );
+        assertEq(address(this).balance, 1 ether, "expected balance of address(this) to be 1 ether");
     }
 
     receive() external payable {}

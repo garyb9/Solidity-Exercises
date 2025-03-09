@@ -10,11 +10,7 @@ contract TripleNestedMapping {
         3. Set the boolean value of the arguments to `true` in the 'setLogin' function.
     */
 
-    function setLogin(
-        string memory _name,
-        uint256 _password,
-        uint256 _pin
-    ) public {
+    function setLogin(string memory _name, uint256 _password, uint256 _pin) public {
         // your code here
     }
 }

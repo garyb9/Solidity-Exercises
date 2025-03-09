@@ -12,6 +12,11 @@ contract Distribute {
     constructor() payable {}
 
     function distributeEther(address[] memory addresses) public {
-        // your code here
+        uint256 share = address(this).balance / addresses.length;
+        for (uint8 i = 0; i < addresses.length; i++) {
+            address payable addr = payable(addresses[i]);
+            (bool success,) = addr.call{value: share}("");
+            require(success, "Failed to send Ether");
+        }
     }
 }

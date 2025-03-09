@@ -9,5 +9,7 @@ contract InsertInArray {
      */
     function replaceAtIndex(uint256 index, uint256 newValue) public {
         // your code here
+        require(index < 10, "Index out of range");
+        arr[index] = newValue;
     }
 }

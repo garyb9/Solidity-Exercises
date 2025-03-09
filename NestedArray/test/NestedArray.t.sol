@@ -85,11 +85,7 @@ contract NestedArrayTest is Test {
         uint256[] memory _newArr = new uint256[](0);
         newArr.push(_newArr);
         nestedArray.setArr(newArr);
-        assertEq(
-            nestedArray.getNestedSum(),
-            0,
-            "Expected sum to be 0 for an empty array"
-        );
+        assertEq(nestedArray.getNestedSum(), 0, "Expected sum to be 0 for an empty array");
     }
 
     // Test case for empty inner arrays
@@ -100,11 +96,7 @@ contract NestedArrayTest is Test {
         newArr.push(_newArr);
 
         nestedArray.setArr(newArr);
-        assertEq(
-            nestedArray.getNestedSum(),
-            0,
-            "Expected sum to be 0 when all inner arrays are empty"
-        );
+        assertEq(nestedArray.getNestedSum(), 0, "Expected sum to be 0 when all inner arrays are empty");
     }
 
     // Test case for one-dimensional array
@@ -116,11 +108,7 @@ contract NestedArrayTest is Test {
         newArr.push(_newArr);
 
         nestedArray.setArr(newArr);
-        assertEq(
-            nestedArray.getNestedSum(),
-            6,
-            "Expected sum to be 6 for a one-dimensional array"
-        );
+        assertEq(nestedArray.getNestedSum(), 6, "Expected sum to be 6 for a one-dimensional array");
     }
 
     // Test case for single value in the nested array
@@ -130,11 +118,7 @@ contract NestedArrayTest is Test {
         newArr.push(_newArr);
 
         nestedArray.setArr(newArr);
-        assertEq(
-            nestedArray.getNestedSum(),
-            1,
-            "Expected sum to be 1 for a single value in the nested array"
-        );
+        assertEq(nestedArray.getNestedSum(), 1, "Expected sum to be 1 for a single value in the nested array");
     }
 
     // Test case for large numbers

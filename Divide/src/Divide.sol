@@ -8,9 +8,8 @@ contract Divide {
      * The calculate interest function is buggy because of how it calculates interest of amount passed into it
      * Make it return the right value.
      */
-
     function calculateInterest(uint256 amount) external pure returns (uint256) {
-        uint256 x = (PERCENTAGE_INTEREST / 100) * amount;
+        uint256 x = (PERCENTAGE_INTEREST * amount) / 100;
         return x;
     }
 }

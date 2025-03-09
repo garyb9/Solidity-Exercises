@@ -14,11 +14,7 @@ contract BlockNumberTest is Test {
     function testCallMe() external {
         blockNumber.callMe();
         address lastCaller = blockNumber.lastCaller();
-        assertEq(
-            lastCaller,
-            address(this),
-            "expected last caller to be address(this)"
-        );
+        assertEq(lastCaller, address(this), "expected last caller to be address(this)");
 
         vm.expectRevert();
         blockNumber.callMe();
@@ -29,10 +25,6 @@ contract BlockNumberTest is Test {
         blockNumber.callMe();
 
         lastCaller = blockNumber.lastCaller();
-        assertEq(
-            lastCaller,
-            address(0xDEAD),
-            "expected last caller to be address(0xDEAD)"
-        );
+        assertEq(lastCaller, address(0xDEAD), "expected last caller to be address(0xDEAD)");
     }
 }

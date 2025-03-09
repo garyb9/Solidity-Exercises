@@ -13,9 +13,6 @@ contract DeployerTest is Test {
 
     function testGreeting() public {
         string memory greeting = deployer.greeting();
-        assertEq(
-            keccak256(abi.encode(greeting)),
-            keccak256(abi.encode("Hello Solidity"))
-        );
+        assertEq(keccak256(abi.encode(greeting)), keccak256(abi.encode("Hello Solidity")));
     }
 }

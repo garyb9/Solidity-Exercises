@@ -28,11 +28,7 @@ contract StackTest is Test {
         uint256[] memory _stack = stack.getStack();
         if (_stack.length == 0) revert();
         uint256 peekValue = stack.peek();
-        assertEq(
-            peekValue,
-            1,
-            "Peek value should be the last element in the stack"
-        );
+        assertEq(peekValue, 1, "Peek value should be the last element in the stack");
     }
 
     function testPeekEmptyStack() external {
@@ -50,11 +46,7 @@ contract StackTest is Test {
         if (_stack.length == 0) revert();
         uint256 popValue = stack.pop();
         _stack = stack.getStack();
-        assertEq(
-            popValue,
-            1,
-            "Pop value should be the last element in the stack"
-        );
+        assertEq(popValue, 1, "Pop value should be the last element in the stack");
         assertEq(_stack.length, 3, "Stack length after pop should be 3");
     }
 

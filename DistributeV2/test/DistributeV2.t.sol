@@ -14,11 +14,7 @@ contract DistributeV2Test is Test {
     }
 
     function testDistributeEther() public {
-        assertEq(
-            address(distributeV2).balance,
-            4 ether,
-            "balance of distributeV2 contract is not 4 ether"
-        );
+        assertEq(address(distributeV2).balance, 4 ether, "balance of distributeV2 contract is not 4 ether");
 
         address[] memory addresses = new address[](4);
         addresses[0] = address(0xBab);
@@ -28,32 +24,12 @@ contract DistributeV2Test is Test {
 
         distributeV2.distributeEther(addresses);
 
-        assertEq(
-            addresses[0].balance,
-            1 ether,
-            "balance of address 0xBab is not 1 ether"
-        );
-        assertEq(
-            addresses[1].balance,
-            1 ether,
-            "balance of address 0xBeb is not 1 ether"
-        );
-        assertEq(
-            addresses[2].balance,
-            1 ether,
-            "balance of address 0xBed is not 1 ether"
-        );
-        assertEq(
-            addresses[3].balance,
-            0,
-            "balance of address 0xBad is not 0 ether"
-        );
+        assertEq(addresses[0].balance, 1 ether, "balance of address 0xBab is not 1 ether");
+        assertEq(addresses[1].balance, 1 ether, "balance of address 0xBeb is not 1 ether");
+        assertEq(addresses[2].balance, 1 ether, "balance of address 0xBed is not 1 ether");
+        assertEq(addresses[3].balance, 0, "balance of address 0xBad is not 0 ether");
 
-        assertEq(
-            address(distributeV2).balance,
-            1 ether,
-            "balance of distributeV2 contract is not 1 ether"
-        );
+        assertEq(address(distributeV2).balance, 1 ether, "balance of distributeV2 contract is not 1 ether");
     }
 }
 

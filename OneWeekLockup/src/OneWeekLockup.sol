@@ -12,7 +12,6 @@ contract OneWeekLockup {
      * - withdrawEther(uint256 )
      * - balanceOf(address )
      */
-
     function balanceOf(address user) public view returns (uint256) {
         // return the user's balance in the contract
     }

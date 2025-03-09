@@ -36,11 +36,7 @@ contract TicTacToeTest is Test {
 
     function testWinningDiagonalRightToLeft() external {
         uint8[3][3] memory board = [[0, 0, 1], [0, 1, 0], [1, 0, 0]];
-        assertEq(
-            tictactoe.isWinning(board),
-            true,
-            "expected right to left diagonal win"
-        );
+        assertEq(tictactoe.isWinning(board), true, "expected right to left diagonal win");
     }
 
     function testIsLosing() external {
@@ -53,11 +49,7 @@ contract TicTacToeTest is Test {
 
     function testAllZeros() external {
         uint8[3][3] memory board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
-        assertEq(
-            tictactoe.isWinning(board),
-            true,
-            "expected win for all zeros"
-        );
+        assertEq(tictactoe.isWinning(board), true, "expected win for all zeros");
     }
 
     function testAllOnes() external {
@@ -67,11 +59,7 @@ contract TicTacToeTest is Test {
 
     function testCornerCaseWin() external {
         uint8[3][3] memory board = [[1, 1, 1], [0, 0, 0], [1, 0, 1]];
-        assertEq(
-            tictactoe.isWinning(board),
-            true,
-            "expected win with only one row full"
-        );
+        assertEq(tictactoe.isWinning(board), true, "expected win with only one row full");
     }
 
     function testNoWin() external {

@@ -14,31 +14,23 @@ contract BasicBankV2Test is Test {
     function testAddEther() external {
         vm.deal(address(this), 1 ether);
         basicBankV2.addEther{value: 1 ether}();
-        assertEq(
-            address(basicBankV2).balance,
-            1 ether,
-            "expected balance of basic bank contract to be 1 ether"
-        );
+        assertEq(address(basicBankV2).balance, 1 ether, "expected balance of basic bank contract to be 1 ether");
     }
 
     function testRemoveEther() external {
         vm.deal(address(this), 1 ether);
         basicBankV2.addEther{value: 1 ether}();
 
+        assertEq(address(basicBankV2).balance, 1 ether, "expected balance of address(this) to be 1 ether");
+
         vm.expectRevert();
         basicBankV2.removeEther(2 ether);
 
         basicBankV2.removeEther(1 ether);
-        assertEq(
-            address(this).balance,
-            1 ether,
-            "expected balance of address(this) to be 1 ether"
-        );
+        assertEq(address(this).balance, 1 ether, "expected balance of address(this) to be 1 ether");
 
         assertEq(
-            basicBankV2.balances(address(this)),
-            0 ether,
-            "expected deposited balance of address(this) to be 0 ether"
+            basicBankV2.balances(address(this)), 0 ether, "expected deposited balance of address(this) to be 0 ether"
         );
     }
 

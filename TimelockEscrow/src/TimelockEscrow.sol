@@ -9,12 +9,10 @@ contract TimelockEscrow {
      * A buyer deposits ether into a contract, and the seller cannot withdraw it until 3 days passes. Before that, the buyer can take it back
      * Assume the owner is the seller
      */
-
     constructor() {
         seller = msg.sender;
     }
 
-    
     /**
      * creates a buy order between msg.sender and seller
      * escrows msg.value for 3 days which buyer can withdraw at anytime before 3 days but afterwhich only seller can withdraw

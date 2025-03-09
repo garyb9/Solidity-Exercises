@@ -14,10 +14,6 @@ contract SuperTest is Test {
     function testGetGreetings() external {
         string memory greetings = superr.getGreetings();
 
-        assertEq(
-            greetings,
-            "Hello World",
-            "expected greetings to be Hello World"
-        );
+        assertEq(greetings, "Hello World", "expected greetings to be Hello World");
     }
 }

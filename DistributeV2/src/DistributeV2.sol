@@ -11,9 +11,21 @@ contract DistributeV2 {
            have a work around for that whereby other recipients still get their transfer
     */
 
+    event TransferFailed(address recipient, uint256 amount);
+    event TransferSuccessful(address recipient, uint256 amount);
+
     constructor() payable {}
 
     function distributeEther(address[] memory addresses) public {
-        // your code here
+        uint256 share = address(this).balance / addresses.length;
+        for (uint8 i = 0; i < addresses.length; i++) {
+            address payable recipient = payable(addresses[i]);
+            (bool success,) = recipient.call{value: share}("");
+            if (!success) {
+                emit TransferFailed(recipient, share);
+            } else {
+                emit TransferSuccessful(recipient, share);
+            }
+        }
     }
 }

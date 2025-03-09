@@ -13,11 +13,23 @@ contract IdiotBettingGame {
            period has ended. It transfers the entire balance of the contract to the winner.
     */
 
+    address public highestBidder;
+    uint256 public highestBid = 0;
+    uint256 public endTime;
+
     function bet() public payable {
         // your code here
+        if (msg.value > highestBid) {
+            highestBid = msg.value;
+            highestBidder = msg.sender;
+            endTime = block.timestamp + 3600;
+        }
     }
 
     function claimPrize() public {
-        // your code here
+        require(msg.sender == highestBidder, "Not the highest bidder");
+        require(block.timestamp >= endTime, "Not ended yet");
+        (bool success,) = payable(highestBidder).call{value: address(this).balance}("");
+        require(success, "Failed to send Ether");
     }
 }

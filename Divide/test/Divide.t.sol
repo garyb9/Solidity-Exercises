@@ -12,26 +12,12 @@ contract DivideTest is Test {
     }
 
     function testDivide() public {
-        assertEq(
-            divide.PERCENTAGE_INTEREST(),
-            3,
-            "percentage interst must equal 3 and shouldn;t be changed"
-        );
+        assertEq(divide.PERCENTAGE_INTEREST(), 3, "percentage interst must equal 3 and shouldn;t be changed");
 
+        assertEq(divide.calculateInterest(1_000_000), 30_000, "3% of 1_000_000 should return 30_000 in solidity");
+        assertEq(divide.calculateInterest(10_000_000), 300_000, "3% of 10_000_000 should return 300_000 in solidity");
         assertEq(
-            divide.calculateInterest(1_000_000),
-            30_000,
-            "3% of 1_000_000 should return 30_000 in solidity"
-        );
-        assertEq(
-            divide.calculateInterest(10_000_000),
-            300_000,
-            "3% of 10_000_000 should return 300_000 in solidity"
-        );
-        assertEq(
-            divide.calculateInterest(100_000_000),
-            3_000_000,
-            "3% of 100_000_000 should return 3_000_000 in solidity"
+            divide.calculateInterest(100_000_000), 3_000_000, "3% of 100_000_000 should return 3_000_000 in solidity"
         );
     }
 }

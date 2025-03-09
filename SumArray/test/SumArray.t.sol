@@ -26,11 +26,7 @@ contract SumArrayTest is Test {
         arr[9] = 27;
 
         uint256 x = sumArray.sumArray(arr);
-        assertEq(
-            x,
-            67252106,
-            "expected sum of arr with multiple elements to be 67252106"
-        );
+        assertEq(x, 67252106, "expected sum of arr with multiple elements to be 67252106");
     }
 
     function testSumArrayEmptyArray() external {
@@ -75,38 +71,14 @@ contract SumArrayTest is Test {
     function testSumArrayRandomNumbers() external {
         // Allocate arr with a length of 5
         uint256[] memory arr = new uint256[](5);
-        arr[0] =
-            uint256(
-                keccak256(abi.encodePacked(block.timestamp, block.prevrandao))
-            ) %
-            10000;
-        arr[1] =
-            uint256(
-                keccak256(abi.encodePacked(block.timestamp, block.number))
-            ) %
-            10000;
-        arr[2] =
-            uint256(
-                keccak256(abi.encodePacked(block.timestamp, block.coinbase))
-            ) %
-            10000;
-        arr[3] =
-            uint256(
-                keccak256(abi.encodePacked(block.timestamp, block.gaslimit))
-            ) %
-            10000;
-        arr[4] =
-            uint256(
-                keccak256(abi.encodePacked(block.timestamp, block.chainid))
-            ) %
-            10000;
+        arr[0] = uint256(keccak256(abi.encodePacked(block.timestamp, block.prevrandao))) % 10000;
+        arr[1] = uint256(keccak256(abi.encodePacked(block.timestamp, block.number))) % 10000;
+        arr[2] = uint256(keccak256(abi.encodePacked(block.timestamp, block.coinbase))) % 10000;
+        arr[3] = uint256(keccak256(abi.encodePacked(block.timestamp, block.gaslimit))) % 10000;
+        arr[4] = uint256(keccak256(abi.encodePacked(block.timestamp, block.chainid))) % 10000;
 
         uint256 expectedSum = arr[0] + arr[1] + arr[2] + arr[3] + arr[4];
         uint256 x = sumArray.sumArray(arr);
-        assertEq(
-            x,
-            expectedSum,
-            "expected sum to match calculated sum of random elements"
-        );
+        assertEq(x, expectedSum, "expected sum to match calculated sum of random elements");
     }
 }

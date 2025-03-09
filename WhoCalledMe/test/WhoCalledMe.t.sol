@@ -14,10 +14,6 @@ contract SumArrayTest is Test {
     function testCallMe() external {
         whoCalledMe.callMe();
         address lastCaller = whoCalledMe.caller();
-        assertEq(
-            lastCaller,
-            address(this),
-            "expected last caller to be address(this)"
-        );
+        assertEq(lastCaller, address(this), "expected last caller to be address(this)");
     }
 }

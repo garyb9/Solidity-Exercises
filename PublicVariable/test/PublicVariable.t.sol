@@ -12,10 +12,6 @@ contract PublicVariableTest is Test {
     }
 
     function testMagicNumber() external {
-        assertEq(
-            publicVariable.number(),
-            42,
-            "expected publicVariable.number() to return 42"
-        );
+        assertEq(publicVariable.number(), 42, "expected publicVariable.number() to return 42");
     }
 }

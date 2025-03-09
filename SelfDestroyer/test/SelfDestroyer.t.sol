@@ -13,10 +13,7 @@ contract SelfDestroyerTest is Test {
     }
 
     function testSelfDestroyer() public {
-        emit log_named_uint(
-            "Self Destroyer balance before",
-            address(selfDestroyer).balance
-        );
+        emit log_named_uint("Self Destroyer balance before", address(selfDestroyer).balance);
 
         selfDestroyer.destroy(address(this));
 

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 contract Tupledore {
-    /* This exercise assumes you know about tuples/struct in solidity.
+/* This exercise assumes you know about tuples/struct in solidity.
         1. Create a struct named `UserInfo` with types address 
            and uint256.
         2. Create a variable of type UserInfo, named `userInfo`.

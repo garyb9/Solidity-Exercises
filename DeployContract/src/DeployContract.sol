@@ -9,9 +9,9 @@ contract Deployer {
     */
 
     function deployContract() public returns (address) {
-        // your code here
+        DeployMe deployedContract = new DeployMe();
+        return address(deployedContract);
     }
 }
 
 contract DeployMe {}
-
