@@ -3,7 +3,7 @@ pragma solidity ^0.8.13;
 
 contract TimelockEscrow {
     address public seller;
-    
+
     // supporting only one buyer at a time
     struct BuyOrder {
         uint256 balance;
@@ -11,7 +11,7 @@ contract TimelockEscrow {
         bool activeEscrow;
     }
 
-    mapping (address => BuyOrder) public balances;
+    mapping(address => BuyOrder) public balances;
 
     /**
      * The goal of this exercise is to create a Time lock escrow.
@@ -29,9 +29,7 @@ contract TimelockEscrow {
      */
     function createBuyOrder() external payable {
         require(!balances[msg.sender].activeEscrow, "Escrow already exists");
-        balances[msg.sender] = BuyOrder(
-            msg.value, block.timestamp, true
-        );
+        balances[msg.sender] = BuyOrder(msg.value, block.timestamp, true);
     }
 
     /**
@@ -41,9 +39,7 @@ contract TimelockEscrow {
         require(balances[buyer].activeEscrow, "Escrow doesnt exists");
         require(balances[buyer].timestamp + 3 days <= block.timestamp, "Not enough time has passed");
         uint256 amount = balances[buyer].balance;
-        balances[buyer] = BuyOrder(
-            0, block.timestamp, false
-        );
+        balances[buyer] = BuyOrder(0, block.timestamp, false);
         (bool success,) = payable(msg.sender).call{value: amount}("");
         require(success, "Transfer failed");
     }
@@ -55,9 +51,7 @@ contract TimelockEscrow {
         require(balances[msg.sender].activeEscrow, "Escrow doesnt exists");
         require(balances[msg.sender].timestamp + 3 days > block.timestamp, "Escrow time has passed");
         uint256 amount = balances[msg.sender].balance;
-        balances[msg.sender] = BuyOrder(
-            0, block.timestamp, false
-        );
+        balances[msg.sender] = BuyOrder(0, block.timestamp, false);
         (bool success,) = payable(msg.sender).call{value: amount}("");
         require(success, "Transfer failed");
     }

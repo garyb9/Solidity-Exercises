@@ -23,7 +23,6 @@ contract Stack {
 
     // your code here
     function push(uint256 number) public {
-        
         stack.push(number);
     }
 

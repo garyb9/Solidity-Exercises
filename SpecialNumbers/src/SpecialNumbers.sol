@@ -8,7 +8,6 @@ contract SpecialNumbers {
      * The goal is to use mappings and store if a number is special or not (using booleans)
      */
 
-
     /// make @param n special
     function makeNumberSpecial(uint256 n) public {
         isSpecial[n] = true;
