@@ -14,7 +14,6 @@ contract ReducingPayoutTest is Test {
 
     function testWithdraw() external {
         vm.startPrank(address(0xbed));
-
         vm.warp(7200);
         // At 2 hours
         uint256 amountExpected = block.timestamp >= 86400 ? 0 : 1 ether - ((block.timestamp * 0.0011574 ether) / 100);

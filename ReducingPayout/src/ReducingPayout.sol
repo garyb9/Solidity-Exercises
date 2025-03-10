@@ -13,11 +13,20 @@ contract ReducingPayout {
     // The time 1 ether was sent to this contract
     uint256 public immutable depositedTime;
 
+    event Log(uint256);
+
     constructor() payable {
         depositedTime = block.timestamp;
     }
 
     function withdraw() public {
-        // your code here
+        uint256 currentTimestamp = block.timestamp;
+
+        if (currentTimestamp < depositedTime + 24 hours) {
+            uint256 timePassed = currentTimestamp - depositedTime; // time in seconds
+            uint256 withdrawAmount = address(this).balance - ((timePassed * 0.0011574 ether) / 100);
+            (bool success,) = payable(msg.sender).call{value: withdrawAmount}("");
+            require(success, "Transfer failed");
+        }
     }
 }

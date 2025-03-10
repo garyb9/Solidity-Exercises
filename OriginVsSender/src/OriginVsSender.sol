@@ -15,6 +15,7 @@ contract OriginVsSender {
     uint256 public number;
 
     function setNumber(uint256 num) external {
-        /// your code here
+        require(tx.origin == msg.sender, "Only the signer can set the number");
+        number = num;
     }
 }

@@ -12,15 +12,34 @@ contract OneWeekLockup {
      * - withdrawEther(uint256 )
      * - balanceOf(address )
      */
+    struct Deposit {
+        uint256 balance;
+        uint256 depositBlock;
+    }
+
+    mapping(address => Deposit) public deposits;
+
     function balanceOf(address user) public view returns (uint256) {
         // return the user's balance in the contract
+        return deposits[user].balance;
     }
 
     function depositEther() external payable {
         /// add code here
+        uint256 lastBalance = this.balanceOf(msg.sender);
+        Deposit memory newDeposit = Deposit(lastBalance + msg.value, block.timestamp);
+        deposits[msg.sender] = newDeposit;
     }
 
     function withdrawEther(uint256 amount) external {
         /// add code here
+        require(balanceOf(msg.sender) >= amount, "Cannot withdraw amount");
+        require(deposits[msg.sender].depositBlock + 1 weeks <= block.timestamp, "Cannot withdraw yet");
+
+        uint256 lastBalance = this.balanceOf(msg.sender);
+        Deposit memory updatedDeposit = Deposit(lastBalance - amount, block.timestamp);
+        deposits[msg.sender] = updatedDeposit;
+        (bool success,) = payable(msg.sender).call{value: amount}("");
+        require(success, "Transfer failed");
     }
 }
